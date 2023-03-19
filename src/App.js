@@ -1,7 +1,29 @@
+import { Provider } from "react-redux";
 import "./App.css";
+import Body from "./components/Body";
+import Header from "./components/Header";
+import store from "./utils/store";
 
 function App() {
-  return <h1>Youtube App</h1>;
+  return (
+    <Provider store={store}>
+      <div>
+        <Header />
+        <Body />
+      </div>
+    </Provider>
+  );
+  /**
+   * header
+   * body
+   *  sidebar
+   *    menuitems
+   *  maincontainer
+   *    buttonslist
+   *    videocontainer
+   *      videocard
+   *
+   */
 }
 
 export default App;
