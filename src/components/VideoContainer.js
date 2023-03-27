@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import VideoCard from "./VideoCard";
+import VideoCard, { AdVideoCard } from "./VideoCard";
 import { YOUTUBE_VIDEOS_API } from "../utils/constants";
 import { Link } from "react-router-dom";
 
@@ -13,16 +13,17 @@ const VideoContainer = () => {
   const getVideos = async () => {
     const data = await fetch(YOUTUBE_VIDEOS_API);
     const json = await data.json();
-    console.log(json, "item");
     setVideos(json.items);
   };
 
   return (
     <div className="flex flex-wrap gap-4 mt-6">
+      {/* HIGHER ORDER COMPONENT FROM VIDEO CARD - AD COMPONENT */}
+      {/* {videos[0] && <AdVideoCard videoInfo={videos[0]} />} */}
       {videos.map((item) => (
-        <div className=" w-[18.5%]">
+        <div className=" w-[18.5%]" key={item.id}>
           <Link to={`/watch?v=${item.id}`}>
-            <VideoCard videoInfo={item} key={item.id} />
+            <VideoCard videoInfo={item} />
           </Link>
         </div>
       ))}

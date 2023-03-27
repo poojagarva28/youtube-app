@@ -1,7 +1,6 @@
 import React from "react";
 
 const VideoCard = ({ videoInfo }) => {
-  console.log(videoInfo, "videoinfo");
   const { snippet, statistics } = videoInfo;
   const { title, thumbnails, channelTitle } = snippet;
 
@@ -16,5 +15,14 @@ const VideoCard = ({ videoInfo }) => {
     </div>
   );
 };
+
+// HIGHER ORDER COMONENT - TAKES A COMPONENT AND RETURNS A NEW COMPONENT
+// export const AdVideoCard = ({ videoInfo }) => {
+//   return (
+//     <div className="border border-red-500">
+//       <VideoCard videoInfo={videoInfo} />
+//     </div>
+//   );
+// };
 
 export default VideoCard;

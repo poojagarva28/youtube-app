@@ -1,12 +1,35 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { toggleMenu } from "../utils/appSlice";
+import { YOUTUBE_SEARCH_API } from "../utils/constants";
 
 const Header = () => {
+  const [searchQuery, setSearchQuery] = useState("");
+  const [suggestions, setSuggestions] = useState([]);
+  const [showSuggestions, setShowSuggestions] = useState(false);
+
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    // make API call in every key stroker but if the difference between keystroke is <200 ms, DECLINE the API call
+    const timer = setTimeout(() => getSearchSuggestions(), 200);
+    return () => {
+      clearTimeout(timer);
+    };
+  }, [searchQuery]); // make API call every time when seatch query changes
+
+  const getSearchSuggestions = async () => {
+    const data = await fetch(YOUTUBE_SEARCH_API + searchQuery);
+    const json = await data.json();
+    console.log(json[1], "search suggestion");
+    setSuggestions(json[1]);
+  };
+
   const toggleMenuHandler = () => {
     dispatch(toggleMenu());
   };
+
+  console.log(searchQuery);
 
   return (
     <div className="grid grid-flow-col py-2 shadow-md items-center">
@@ -28,12 +51,28 @@ const Header = () => {
       <div className="col-span-10 px-44">
         <input
           type="text"
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+          onFocus={() => setShowSuggestions(true)}
+          onBlur={() => setShowSuggestions(false)}
           className="w-4/5 border border-gray-400 rounded-l-full p-1 px-4"
         />
+        {suggestions?.length > 0 && showSuggestions && (
+          <div className="fixed bg-white py-3 px-2 w-[38rem] rounded-md shadow-md">
+            <ul>
+              {suggestions.map((suggestion, i) => (
+                <li className="py-2 px-2 shadow-sm hover:bg-slate-100" key={i}>
+                  🔍 {suggestion}
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
         <button className="border border-gray-900 p-1 px-4 rounded-r-full bg-gray-100 text-white">
           🔍
         </button>
       </div>
+
       <div className="col-span-1">
         <img
           src="https://upload.wikimedia.org/wikipedia/commons/9/99/Sample_User_Icon.png"
