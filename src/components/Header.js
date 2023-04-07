@@ -41,6 +41,7 @@ const Header = () => {
     setSuggestions(json[1]);
 
     // update cache
+    // console.log({ [searchQuery]: json[1] }, "[searchQuery]:json[1]");
     dispatch(
       cacheResults({
         [searchQuery]: json[1],

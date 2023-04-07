@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { useSearchParams } from "react-router-dom";
 import { closeMenu } from "../utils/appSlice";
+import Comments from "./Comments";
 
 const WatchPage = () => {
   const [watchVideo, setWatchVideo] = useState(null);
@@ -39,6 +40,9 @@ const WatchPage = () => {
         <button className="rounded-3xl shadow-lg py-1 px-3 bg-gray-700 text-white font-semibold">
           Subscribe
         </button>
+      </div>
+      <div className="w-9/12">
+        <Comments />
       </div>
     </div>
   );
