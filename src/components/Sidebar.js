@@ -16,18 +16,11 @@ const Sidebar = () => {
         <li>Videos</li>
         <li>Live</li>
       </ul>
-      <h3 className="font-bold pt-5">Subscriptions</h3>
+      <h3 className="font-bold pt-5">List</h3>
       <ul>
-        <li>Music</li>
-        <li>Sports</li>
-        <li>Gaming</li>
-        <li>Movies</li>
-      </ul>
-      <h3 className="font-bold pt-5">Watch Later</h3>
-      <ul>
-        <li>Music</li>
-        <li>Sports</li>
-        <li>Gaming</li>
+        <li>Naruto</li>
+        <li>Ghibli Movies</li>
+        <li>Jujutsu Kaisen</li>
         <li>Movies</li>
       </ul>
     </div>

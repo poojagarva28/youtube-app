@@ -79,12 +79,12 @@ const Comments = () => {
 
   const CommentsList = ({ comments }) => {
     return comments.map((comment, i) => (
-      <>
-        <Comment key={i} data={comment} />
+      <div key={i}>
+        <Comment data={comment} />
         <div className="ml-10 pl-5 border border-l-black">
           <CommentsList comments={comment.replies} />
         </div>
-      </>
+      </div>
     ));
   };
 

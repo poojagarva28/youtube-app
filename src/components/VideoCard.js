@@ -10,7 +10,7 @@ const VideoCard = ({ videoInfo }) => {
       <div className="p-3">
         <h4 className="font-bold">{title}</h4>
         <h5>{channelTitle}</h5>
-        <h6>{statistics.viewCount} Views</h6>
+        {/* <h6>{statistics.viewCount} Views</h6> */}
       </div>
     </div>
   );

@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 import { toggleMenu } from "../utils/appSlice";
 import { YOUTUBE_SEARCH_API } from "../utils/constants";
+import { setSearchItem } from "../utils/searchItemSlice";
 import { cacheResults } from "../utils/searchSlice";
 
 const Header = () => {
@@ -12,7 +14,7 @@ const Header = () => {
   const dispatch = useDispatch();
 
   const searchCache = useSelector((store) => store.search);
-  console.log(searchCache, "searchCache");
+  // console.log(searchCache, "searchCache");
   useEffect(() => {
     // make API call in every key stroker but if the difference between keystroke is <200 ms, DECLINE the API call
 
@@ -37,9 +39,8 @@ const Header = () => {
   const getSearchSuggestions = async () => {
     const data = await fetch(YOUTUBE_SEARCH_API + searchQuery);
     const json = await data.json();
-    console.log(json[1], "search suggestion");
+    // console.log(json[1], "search suggestion");
     setSuggestions(json[1]);
-
     // update cache
     // console.log({ [searchQuery]: json[1] }, "[searchQuery]:json[1]");
     dispatch(
@@ -53,7 +54,7 @@ const Header = () => {
     dispatch(toggleMenu());
   };
 
-  console.log(searchQuery);
+  // console.log(searchQuery);
 
   return (
     <div className="grid grid-flow-col py-2 shadow-md items-center">
@@ -64,13 +65,13 @@ const Header = () => {
           alt="menu"
           onClick={toggleMenuHandler}
         />
-        <a href="">
+        <Link to="/">
           <img
             src="https://logos-world.net/wp-content/uploads/2020/04/YouTube-Logo.png"
             alt="youtube app"
             className="h-12 ml-2"
           />
-        </a>
+        </Link>
       </div>
       <div className="col-span-10 px-44">
         <input
@@ -85,13 +86,21 @@ const Header = () => {
           <div className="fixed bg-white py-3 px-2 w-[38rem] rounded-md shadow-md">
             <ul>
               {suggestions.map((suggestion, i) => (
-                <li className="py-2 px-2 shadow-sm hover:bg-slate-100" key={i}>
+                <li
+                  className="py-2 px-2 shadow-sm hover:bg-slate-100"
+                  key={i}
+                  onClick={() => {
+                    console.log("clicked");
+                    dispatch(setSearchItem(suggestion));
+                  }}
+                >
                   🔍 {suggestion}
                 </li>
               ))}
             </ul>
           </div>
         )}
+
         <button className="border border-gray-900 p-1 px-4 rounded-r-full bg-gray-100 text-white">
           🔍
         </button>
