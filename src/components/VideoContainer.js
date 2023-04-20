@@ -29,7 +29,7 @@ const VideoContainer = () => {
   };
 
   return (
-    <div className="flex flex-wrap gap-4 mt-6">
+    <div className="flex flex-wrap gap-4 mt-2">
       {/* HIGHER ORDER COMPONENT FROM VIDEO CARD - AD COMPONENT */}
       {/* {videos[0] && <AdVideoCard videoInfo={videos[0]} />} */}
       {appVideos.map((item) => (

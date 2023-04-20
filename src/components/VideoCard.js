@@ -5,8 +5,12 @@ const VideoCard = ({ videoInfo }) => {
   const { title, thumbnails, channelTitle } = snippet;
 
   return (
-    <div className="bg-black text-white shadow-3xl overflow-hidden videocard m-3 border-4 border-white">
-      <img src={thumbnails.medium.url} alt="thumbnail" />
+    <div className="bg-white text-black  overflow-hidden videocard m-3 border-[4px] border-[#f4d738]">
+      <img
+        src={thumbnails.medium.url}
+        alt="thumbnail"
+        className="border-[#f4d738] border-[3px]"
+      />
       <div className="p-3">
         <h4 className="font-bold">{title}</h4>
         <h5>{channelTitle}</h5>

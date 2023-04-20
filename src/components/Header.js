@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Menu, User, Video } from "react-feather";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { toggleMenu } from "../utils/appSlice";
@@ -70,20 +71,29 @@ const Header = () => {
   // console.log(searchQuery);
 
   return (
-    <div className="grid grid-flow-col py-2 shadow-md items-center bg-[#9723c9]">
+    <div className="grid grid-flow-col py-2 shadow-md items-center bg-[#69d2e7]">
       <div className="flex col-span-1">
-        <img
+        {/* <img
           className="h-12 pl-8 cursor-pointer"
           src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAARVBMVEX///8jHyAgHB0OBQgMAAWlpKQpJSaenZ309PUAAAAIAAD8/Pz5+fna2tqop6dvbW1oZmevrq4tKivFxMQYExRiYGC+vr7Dc4WrAAABB0lEQVR4nO3cS3LCMBAFQGIIIBPbhN/9jxqSyiIsTUnlydB9g1eSNV5MvdUKAAAAAAAAAAAAAAAAXtEwvscwDk3yHabSb2Loy/TRIOHUv8XRH+sHHMrSqR6U+hd1jHSE90P8lHC2/Lc0/0vzMy3WMdynxaFBwu+Jv4uh0cQHAAAAAAAAAIB59jG0ijdcT9sYTtcmK0PncumiuJRz/YD7bbf0ut4f3br+GvQt2PblrXrC3WbpUA/6sXrC/GeY/zvM/5aGmofHZiu0S//M/GoVDwAAAAAAAAAAZsjeuRerN1HL7hPy95fm76DNnzD/Lc3/0rxAJ3v+Xn0AAAAAAAAAAAAAAAD4T74AYhs1O+vt3ioAAAAASUVORK5CYII="
           alt="menu"
           onClick={toggleMenuHandler}
+        /> */}
+        <Menu
+          className="w-20 h-12 p-1 text-white cursor-pointer"
+          onClick={toggleMenuHandler}
         />
         <Link to="/">
-          <img
+          {/* <img
             src="https://logos-world.net/wp-content/uploads/2020/04/YouTube-Logo.png"
             alt="youtube app"
             className="h-12 ml-2"
-          />
+          /> */}
+          {/* <Video className="w-20 h-12 p-1 text-white" />  */}
+          <h4 className="text-white font-extrabold text-2xl mt-2">
+            {" "}
+            Video App
+          </h4>
         </Link>
       </div>
       <div className="col-span-10 px-44">
@@ -93,14 +103,14 @@ const Header = () => {
           onChange={(e) => setSearchQuery(e.target.value)}
           onFocus={() => setShowSuggestions(true)}
           // onBlur={() => setShowSuggestions(false)}
-          className="w-4/5   p-1 px-4 bg-[#c4a1ff] font-bold focus:border-none focus:outline-none focus:shadow-none focus:bg-purple-400"
+          className="w-4/5   p-1 px-4 bg-[#daf5f0] font-bold focus:border-none focus:outline-none focus:shadow-none focus:bg-[#a7dbd8]"
         />
         {suggestions?.length > 0 && showSuggestions && (
-          <div className="bg-purple-400 py-3 px-2 w-[38rem] shadow-3xl absolute z-10">
+          <div className="bg-[#fff] py-3 px-2 w-[38rem] shadow-2xl absolute z-10 mt-2">
             <ul>
               {suggestions.map((suggestion, i) => (
                 <li
-                  className="py-2 px-2 shadow-sm hover:bg-black font-bold cursor-pointer"
+                  className="py-2 px-2 shadow-sm hover:bg-[#daf5f0] font-bold cursor-pointer"
                   key={i}
                   onClick={() => {
                     console.log("clicked");
@@ -116,17 +126,18 @@ const Header = () => {
           </div>
         )}
 
-        <button className="border border-none p-1 px-4  bg-purple-400 text-white">
+        <button className="border border-none p-1 px-4  bg-[#daf5f0] text-white ml-2 hover:bg-[#a7dbd8]">
           🔍
         </button>
       </div>
 
       <div className="col-span-1">
-        <img
+        {/* <img
           src="https://upload.wikimedia.org/wikipedia/commons/9/99/Sample_User_Icon.png"
           alt="user"
           className="h-12"
-        />
+        /> */}
+        <User className="w-20 h-12 p-1 text-white" />
       </div>
     </div>
   );
