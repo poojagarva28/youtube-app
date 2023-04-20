@@ -24,41 +24,43 @@ const WatchPage = () => {
   };
 
   return (
-    <div className="p-8 flex">
-      <div>
-        <iframe
-          width="1000"
-          height="500"
-          src={"https://www.youtube.com/embed/" + searchParams.get("v")}
-          title="YouTube video player"
-          frameBorder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          allowFullScreen
-        ></iframe>
-        <h4 className="font-bold text-2xl my-4">
-          {watchVideo?.snippet?.title}
-        </h4>
-        <div className="flex items-center gap-4 ">
-          <h4 className="font-semibold text-xl">
-            {watchVideo?.snippet?.channelTitle}
+    <>
+      <div className="p-8 flex">
+        <div>
+          <iframe
+            width="1000"
+            height="500"
+            src={"https://www.youtube.com/embed/" + searchParams.get("v")}
+            title="YouTube video player"
+            frameBorder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowFullScreen
+          ></iframe>
+          <h4 className="font-bold text-2xl my-4">
+            {watchVideo?.snippet?.title}
           </h4>
-          <button className="rounded-3xl shadow-lg py-1 px-3 bg-gray-700 text-white font-semibold">
-            Subscribe
-          </button>
-        </div>
-        <div className=" flex">
-          <div className="w-[100%]">
-            <Comments />
-          </div>
-          <div className="w-[100%]">
-            <RelatedVideos />
+          <div className="flex items-center gap-4 ">
+            <h4 className="font-semibold text-xl">
+              {watchVideo?.snippet?.channelTitle}
+            </h4>
+            <button className="rounded-3xl shadow-lg py-1 px-3 bg-gray-700 text-white font-semibold">
+              Subscribe
+            </button>
           </div>
         </div>
+        <div className="px-5 flex flex-col">
+          <LiveChat />
+        </div>
       </div>
-      <div className="px-5 flex flex-col">
-        <LiveChat />
+      <div className="flex">
+        <div className="w-[1900px]">
+          <Comments />
+        </div>
+        <div>
+          <RelatedVideos />
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 

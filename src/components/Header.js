@@ -2,14 +2,15 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { toggleMenu } from "../utils/appSlice";
-import { YOUTUBE_SEARCH_API } from "../utils/constants";
-import { setSearchItem } from "../utils/searchItemSlice";
+import { GOOGLE_API_KEY, YOUTUBE_SEARCH_API } from "../utils/constants";
+import { setSearchItem, setSearchVideos } from "../utils/searchItemSlice";
 import { cacheResults } from "../utils/searchSlice";
 
 const Header = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [suggestions, setSuggestions] = useState([]);
   const [showSuggestions, setShowSuggestions] = useState(false);
+  const appSearchText = useSelector((store) => store.searchItem.searchText);
 
   const dispatch = useDispatch();
 
@@ -54,10 +55,22 @@ const Header = () => {
     dispatch(toggleMenu());
   };
 
+  const getVideos = async (suggestion) => {
+    const data = await fetch(
+      "https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&q=" +
+        suggestion +
+        "&key=" +
+        GOOGLE_API_KEY
+    );
+    console.log(data, "data");
+    const json = await data.json();
+    console.log(json?.items, "json.itemsjson.items");
+    dispatch(setSearchVideos(json.items));
+  };
   // console.log(searchQuery);
 
   return (
-    <div className="grid grid-flow-col py-2 shadow-md items-center">
+    <div className="grid grid-flow-col py-2 shadow-md items-center bg-[#9723c9]">
       <div className="flex col-span-1">
         <img
           className="h-12 pl-8 cursor-pointer"
@@ -79,19 +92,21 @@ const Header = () => {
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
           onFocus={() => setShowSuggestions(true)}
-          onBlur={() => setShowSuggestions(false)}
-          className="w-4/5 border border-gray-400 rounded-l-full p-1 px-4"
+          // onBlur={() => setShowSuggestions(false)}
+          className="w-4/5   p-1 px-4 bg-[#c4a1ff] font-bold focus:border-none focus:outline-none focus:shadow-none focus:bg-purple-400"
         />
         {suggestions?.length > 0 && showSuggestions && (
-          <div className="fixed bg-white py-3 px-2 w-[38rem] rounded-md shadow-md">
+          <div className="bg-purple-400 py-3 px-2 w-[38rem] shadow-3xl absolute z-10">
             <ul>
               {suggestions.map((suggestion, i) => (
                 <li
-                  className="py-2 px-2 shadow-sm hover:bg-slate-100"
+                  className="py-2 px-2 shadow-sm hover:bg-black font-bold cursor-pointer"
                   key={i}
                   onClick={() => {
                     console.log("clicked");
                     dispatch(setSearchItem(suggestion));
+                    getVideos(suggestion);
+                    setShowSuggestions(false);
                   }}
                 >
                   🔍 {suggestion}
@@ -101,7 +116,7 @@ const Header = () => {
           </div>
         )}
 
-        <button className="border border-gray-900 p-1 px-4 rounded-r-full bg-gray-100 text-white">
+        <button className="border border-none p-1 px-4  bg-purple-400 text-white">
           🔍
         </button>
       </div>

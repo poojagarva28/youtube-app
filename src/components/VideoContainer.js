@@ -33,7 +33,7 @@ const VideoContainer = () => {
       {/* HIGHER ORDER COMPONENT FROM VIDEO CARD - AD COMPONENT */}
       {/* {videos[0] && <AdVideoCard videoInfo={videos[0]} />} */}
       {appVideos.map((item) => (
-        <div className=" w-[18.5%]" key={item.id.videoId}>
+        <div className=" w-[19%]" key={item.id.videoId}>
           <Link to={`/watch?v=${item.id.videoId}`}>
             <VideoCard videoInfo={item} />
           </Link>

@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const searchItemSlice = createSlice({
   name: "searchItem",
   initialState: {
-    searchText: "anime",
+    searchText: "naruto",
     searchVideos: [],
   },
   reducers: {

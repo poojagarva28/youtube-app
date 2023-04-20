@@ -23,18 +23,28 @@ const RelatedVideos = () => {
     console.log(json.items, "related videos");
     setVideos(json.items);
   };
-  return videos.map((item) => (
-    <Link to={`/watch?v=${item.id.videoId}`} key={item.id.videoId}>
-      <div className="shadow-md rounded-lg overflow-hidden flex mb-3">
-        <img src={item?.snippet?.thumbnails?.medium?.url} alt="thumbnail" />
-        <div className="p-2">
-          <h4 className="font-bold">{item?.snippet?.title}</h4>
-          <h5>{item?.snippet?.channelTitle}</h5>
-          <h6>{item?.snippet?.viewCount} Views</h6>
-        </div>
-      </div>
-    </Link>
-  ));
+  return (
+    <>
+      <h1 className="text-2xl -ml-10 font-bold">Related Videos</h1>
+
+      {videos.map((item) => (
+        <Link to={`/watch?v=${item.id.videoId}`} key={item.id.videoId}>
+          <div className="bg-black text-white shadow-3xl overflow-hidden -ml-10 videocard m-3 border-4 w-[300px] border-white ">
+            <img
+              src={item?.snippet?.thumbnails?.medium?.url}
+              alt="thumbnail"
+              className="w-10px"
+            />
+            <div className="p-2">
+              <h4 className="font-bold">{item?.snippet?.title}</h4>
+              <h5>{item?.snippet?.channelTitle}</h5>
+              <h6>{item?.snippet?.viewCount} Views</h6>
+            </div>
+          </div>
+        </Link>
+      ))}
+    </>
+  );
 };
 
 export default RelatedVideos;

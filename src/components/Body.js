@@ -7,7 +7,8 @@ const Body = () => {
   return (
     <>
       <Header />
-      <div className="grid grid-flow-col">
+      <div>
+        {/* <div className="grid grid-flow-col"> */}
         <Sidebar />
         <Outlet />
         {/* <MainContainer />

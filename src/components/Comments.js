@@ -62,7 +62,7 @@ const Comments = () => {
   const Comment = ({ data }) => {
     const { name, text, replies } = data;
     return (
-      <div className="flex bg-gray-200 p-3 my-2">
+      <div className="flex bg-[#b5d2ad] p-3 my-2 text-black font-bold">
         <img
           src="https://www.iconpacks.net/icons/2/free-user-icon-3296-thumb.png"
           alt="comment icon"
@@ -70,7 +70,7 @@ const Comments = () => {
           height={30}
         />
         <div className="ml-2">
-          <h3 className="font-bold">{name}</h3>
+          <h3 className="font-extrabold">{name}</h3>
           <p>{text}</p>
         </div>
       </div>
@@ -89,7 +89,7 @@ const Comments = () => {
   };
 
   return (
-    <div className="py-5">
+    <div className="py-5 ml-8 mr-16">
       <h1 className="text-2xl font-bold">Comments</h1>
       <CommentsList comments={commentsData} />
     </div>
