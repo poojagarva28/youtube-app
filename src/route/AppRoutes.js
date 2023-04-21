@@ -5,15 +5,15 @@ import WatchPage from "../components/WatchPage";
 
 export const appRouter = createBrowserRouter([
   {
-    path: "/",
+    path: "/youtube-app",
     element: <Body />,
     children: [
       {
-        path: "/",
+        path: "/youtube-app",
         element: <MainContainer />,
       },
       {
-        path: "/watch",
+        path: "/youtube-app/watch",
         element: <WatchPage />,
       },
     ],

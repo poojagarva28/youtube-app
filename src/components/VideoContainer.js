@@ -34,7 +34,7 @@ const VideoContainer = () => {
       {/* {videos[0] && <AdVideoCard videoInfo={videos[0]} />} */}
       {appVideos.map((item) => (
         <div className=" w-[19%]" key={item.id.videoId}>
-          <Link to={`/watch?v=${item.id.videoId}`}>
+          <Link to={`/youtube-app/watch?v=${item.id.videoId}`}>
             <VideoCard videoInfo={item} />
           </Link>
         </div>

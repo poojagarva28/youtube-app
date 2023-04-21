@@ -27,7 +27,10 @@ const RelatedVideos = () => {
     <>
       <h1 className="text-2xl  mb-6  font-bold">Related Videos</h1>
       {videos.map((item) => (
-        <Link to={`/watch?v=${item.id.videoId}`} key={item.id.videoId}>
+        <Link
+          to={`/youtube-app/watch?v=${item.id.videoId}`}
+          key={item.id.videoId}
+        >
           <div className="bg-white text-black   videocard my-3 mb-7 overflow-hidden border-[4px] border-[#f4d738] ">
             <img
               src={item?.snippet?.thumbnails?.medium?.url}

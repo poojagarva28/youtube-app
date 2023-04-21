@@ -75,7 +75,7 @@ const Header = () => {
     getVideos(suggestion);
     setShowSuggestions(false);
     if (pathname !== "/") {
-      navigate("/");
+      navigate("/youtube-app");
     }
   };
 
@@ -92,7 +92,7 @@ const Header = () => {
           className="w-20 h-12 p-1 text-white cursor-pointer"
           onClick={toggleMenuHandler}
         />
-        <Link to="/">
+        <Link to="/youtube-app">
           {/* <img
             src="https://logos-world.net/wp-content/uploads/2020/04/YouTube-Logo.png"
             alt="youtube app"

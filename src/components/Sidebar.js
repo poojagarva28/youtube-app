@@ -10,7 +10,7 @@ const Sidebar = () => {
     <div className="p-5 shadow-lg col-span-1 text-white font-bold h-[800] text-[18px] fixed bg-[#69d2e7] z-10  w-[15%] pl-6">
       <ul>
         <li>
-          <Link to="/">Home</Link>
+          <Link to="/youtube-app">Home</Link>
         </li>
         <li>Shorts</li>
         <li>Videos</li>
