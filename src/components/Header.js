@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { Menu, User, Video } from "react-feather";
+import { Menu, User } from "react-feather";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { toggleMenu } from "../utils/appSlice";
 import { GOOGLE_API_KEY, YOUTUBE_SEARCH_API } from "../utils/constants";
 import { setSearchItem, setSearchVideos } from "../utils/searchItemSlice";
@@ -11,9 +11,9 @@ const Header = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [suggestions, setSuggestions] = useState([]);
   const [showSuggestions, setShowSuggestions] = useState(false);
-  const appSearchText = useSelector((store) => store.searchItem.searchText);
-
+  const { pathname } = useLocation();
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const searchCache = useSelector((store) => store.search);
   // console.log(searchCache, "searchCache");
@@ -70,6 +70,15 @@ const Header = () => {
   };
   // console.log(searchQuery);
 
+  const suggestionHandler = (suggestion) => {
+    dispatch(setSearchItem(suggestion));
+    getVideos(suggestion);
+    setShowSuggestions(false);
+    if (pathname !== "/") {
+      navigate("/");
+    }
+  };
+
   return (
     <div className="grid grid-flow-col py-2 shadow-md items-center bg-[#69d2e7]">
       <div className="flex col-span-1">
@@ -112,12 +121,7 @@ const Header = () => {
                 <li
                   className="py-2 px-2 shadow-sm hover:bg-[#daf5f0] font-bold cursor-pointer"
                   key={i}
-                  onClick={() => {
-                    console.log("clicked");
-                    dispatch(setSearchItem(suggestion));
-                    getVideos(suggestion);
-                    setShowSuggestions(false);
-                  }}
+                  onClick={() => suggestionHandler(suggestion)}
                 >
                   🔍 {suggestion}
                 </li>

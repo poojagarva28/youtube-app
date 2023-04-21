@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link, useSearchParams } from "react-router-dom";
-import { GOOGLE_API_KEY, YOUTUBE_RELATED_VIDEOS_API } from "../utils/constants";
+import { GOOGLE_API_KEY } from "../utils/constants";
 
 const RelatedVideos = () => {
   const [videos, setVideos] = useState([]);
@@ -10,7 +10,7 @@ const RelatedVideos = () => {
 
   useEffect(() => {
     getRelatedVideos();
-  }, []);
+  }, [searchParams]);
 
   const getRelatedVideos = async () => {
     const api =

@@ -16,6 +16,11 @@ const WatchPage = () => {
     getVideoData();
   }, []);
 
+  useEffect(() => {
+    console.log(searchParams, "pathname");
+    window.scrollTo(0, 0);
+  }, [searchParams]);
+
   const getVideoData = async () => {
     const data = await fetch("");
     const json = await data.json();

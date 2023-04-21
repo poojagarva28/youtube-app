@@ -49,20 +49,22 @@ const LiveChat = () => {
         ))}
       </div>
 
-      <div className="flex gap-2">
-        <form onSubmit={chatMessageHandler}>
-          <input
-            className=" placeholder:text-white w-[124%] h-10 px-2 mt-0 bg-[#c4a1ff] text-white font-bold border-none focus:border-none focus:outline-none focus:shadow-none focus:bg-purple-400"
-            type="text"
-            placeholder="Enter your message"
-            value={liveMessage}
-            onChange={(e) => setLiveMessage(e.target.value)}
-          />
-        </form>
-        <button className="bg-[#a388ee] px-3 h-10 mt-0 mr-0 p-0  ml-12 text-white">
+      <form className="flex mt-4" onSubmit={chatMessageHandler}>
+        <input
+          className=" placeholder:text-white w-[82%] h-10 px-2 mt-0 bg-[#c4a1ff] text-white font-bold border-none focus:border-none focus:outline-none focus:shadow-none focus:bg-purple-400"
+          type="text"
+          placeholder="Enter your message"
+          value={liveMessage}
+          onChange={(e) => setLiveMessage(e.target.value)}
+        />
+
+        <button
+          onSubmit={() => setLiveMessage(liveMessage)}
+          className="bg-[#a388ee] px-3 h-10 ml-2 mt-0 mr-0 p-0 text-white"
+        >
           <Send />
         </button>
-      </div>
+      </form>
     </div>
   );
 };

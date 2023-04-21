@@ -5,7 +5,7 @@ const VideoCard = ({ videoInfo }) => {
   const { title, thumbnails, channelTitle } = snippet;
 
   return (
-    <div className="bg-white text-black  overflow-hidden videocard m-3 border-[4px] border-[#f4d738]">
+    <div className="bg-white text-black  overflow-hidden videocard m-3 border-4 border-[#f4d738]">
       <img
         src={thumbnails.medium.url}
         alt="thumbnail"

@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from "react";
-import VideoCard, { AdVideoCard } from "./VideoCard";
-import { GOOGLE_API_KEY, YOUTUBE_VIDEOS_API } from "../utils/constants";
+import React, { useEffect } from "react";
+import VideoCard from "./VideoCard";
+import { GOOGLE_API_KEY } from "../utils/constants";
 import { Link } from "react-router-dom";
-import { setSearchItem, setSearchVideos } from "../utils/searchItemSlice";
+import { setSearchVideos } from "../utils/searchItemSlice";
 import { useDispatch, useSelector } from "react-redux";
 
 const VideoContainer = () => {
