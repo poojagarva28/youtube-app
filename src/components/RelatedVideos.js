@@ -25,15 +25,14 @@ const RelatedVideos = () => {
   };
   return (
     <>
-      <h1 className="text-2xl -ml-10 font-bold">Related Videos</h1>
-
+      <h1 className="text-2xl  mb-6  font-bold">Related Videos</h1>
       {videos.map((item) => (
         <Link to={`/watch?v=${item.id.videoId}`} key={item.id.videoId}>
-          <div className="bg-black text-white shadow-3xl overflow-hidden -ml-10 videocard m-3 border-4 w-[300px] border-white ">
+          <div className="bg-white text-black   videocard my-3 mb-7 overflow-hidden border-[4px] border-[#f4d738] ">
             <img
               src={item?.snippet?.thumbnails?.medium?.url}
               alt="thumbnail"
-              className="w-10px"
+              className="w-full  border-[2px] border-[#f4d738]"
             />
             <div className="p-2">
               <h4 className="font-bold">{item?.snippet?.title}</h4>

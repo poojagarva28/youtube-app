@@ -57,6 +57,43 @@ const Comments = () => {
         },
       ],
     },
+    {
+      name: "Pooja Garva",
+      text: "Nice Video",
+      replies: [
+        {
+          name: "Pooja Garva",
+          text: "Nice Video",
+          replies: [],
+        },
+        {
+          name: "Pooja Garva",
+          text: "Nice Video",
+          replies: [],
+        },
+      ],
+    },
+    {
+      name: "Pooja Garva",
+      text: "Nice Video",
+      replies: [],
+    },
+    {
+      name: "Pooja Garva",
+      text: "Nice Video",
+      replies: [
+        {
+          name: "Pooja Garva",
+          text: "Nice Video",
+          replies: [],
+        },
+        {
+          name: "Pooja Garva",
+          text: "Nice Video",
+          replies: [],
+        },
+      ],
+    },
   ];
 
   const Comment = ({ data }) => {
@@ -81,7 +118,7 @@ const Comments = () => {
     return comments.map((comment, i) => (
       <div key={i}>
         <Comment data={comment} />
-        <div className="ml-10 pl-5 border border-l-black">
+        <div className="ml-10 pl-5 border  border-l-[#b5d2ad] border-t-0 border-b-0 border-r-0">
           <CommentsList comments={comment.replies} />
         </div>
       </div>
@@ -89,8 +126,8 @@ const Comments = () => {
   };
 
   return (
-    <div className="py-5 ml-8 mr-16">
-      <h1 className="text-2xl font-bold">Comments</h1>
+    <div className="mx-2">
+      <h1 className="text-2xl font-bold mb-6">Comments</h1>
       <CommentsList comments={commentsData} />
     </div>
   );

@@ -25,10 +25,10 @@ const WatchPage = () => {
 
   return (
     <>
-      <div className="p-8 flex">
-        <div>
+      <div className="p-2 pt-5 px-0 flex">
+        <div className="p-5 bg-white">
           <iframe
-            width="1000"
+            width="960"
             height="500"
             src={"https://www.youtube.com/embed/" + searchParams.get("v")}
             title="YouTube video player"
@@ -48,15 +48,15 @@ const WatchPage = () => {
             </button>
           </div>
         </div>
-        <div className="px-5 flex flex-col">
+        <div className="px-5 flex flex-col pr-0 w-[380px]">
           <LiveChat />
         </div>
       </div>
-      <div className="flex">
-        <div className="w-[1900px]">
+      <div className="flex mb-6">
+        <div className="bg-white p-5 w-[1000px] mt-5">
           <Comments />
         </div>
-        <div>
+        <div className="bg-white p-5 w-[360px] mt-5 ml-5">
           <RelatedVideos />
         </div>
       </div>
