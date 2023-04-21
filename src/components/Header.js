@@ -61,7 +61,13 @@ const Header = () => {
       "https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&q=" +
         suggestion +
         "&key=" +
-        GOOGLE_API_KEY
+        GOOGLE_API_KEY,
+      {
+        headers: {
+          Authorization: `Bearer ${GOOGLE_API_KEY}`,
+          Accept: "application/json",
+        },
+      }
     );
     console.log(data, "data");
     const json = await data.json();
