@@ -61,17 +61,17 @@ const Header = () => {
       "https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&q=" +
         suggestion +
         "&key=" +
-        GOOGLE_API_KEY,
-      {
-        headers: {
-          Authorization: `Bearer ${GOOGLE_API_KEY}`,
-          Accept: "application/json",
-        },
-      }
+        GOOGLE_API_KEY
+      // {
+      //   headers: {
+      //     Authorization: `Bearer ${GOOGLE_API_KEY}`,
+      //     Accept: "application/json",
+      //   },
+      // }
     );
-    console.log(data, "data");
+    // console.log(data, "data");
     const json = await data.json();
-    console.log(json?.items, "json.itemsjson.items");
+    // console.log(json?.items, "json.itemsjson.items");
     dispatch(setSearchVideos(json.items));
   };
   // console.log(searchQuery);
@@ -117,17 +117,23 @@ const Header = () => {
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
           onFocus={() => setShowSuggestions(true)}
-          // onBlur={() => setShowSuggestions(false)}
+          onBlur={() => {
+            setShowSuggestions(false);
+            setSuggestions([]);
+          }}
           className="w-4/5   p-1 px-4 bg-[#daf5f0] font-bold focus:border-none focus:outline-none focus:shadow-none focus:bg-[#a7dbd8]"
         />
         {suggestions?.length > 0 && showSuggestions && (
-          <div className="bg-[#fff] py-3 px-2 w-[38rem] shadow-2xl absolute z-10 mt-2">
+          <div
+            className="bg-[#fff] py-3 px-2 w-[38rem] shadow-2xl absolute z-10 mt-2"
+            onClick={() => setShowSuggestions(false)}
+          >
             <ul>
               {suggestions.map((suggestion, i) => (
                 <li
                   className="py-2 px-2 shadow-sm hover:bg-[#daf5f0] font-bold cursor-pointer"
                   key={i}
-                  onClick={() => suggestionHandler(suggestion)}
+                  onMouseDown={() => suggestionHandler(suggestion)}
                 >
                   🔍 {suggestion}
                 </li>

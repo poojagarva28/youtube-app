@@ -11,7 +11,7 @@ const searchItemSlice = createSlice({
       state.searchText = action.payload;
     },
     setSearchVideos: (state, action) => {
-      console.log(action.payload, "action.payload");
+      // console.log(action.payload, "action.payload");
       state.searchVideos = action.payload;
     },
   },

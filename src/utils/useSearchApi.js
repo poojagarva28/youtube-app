@@ -10,8 +10,8 @@ export const useSearchApi = async (appSearchText) => {
       "&key=" +
       GOOGLE_API_KEY
   );
-  console.log(data, "data");
+  //   console.log(data, "data");
   const json = await data.json();
-  console.log(json?.items, "json.itemsjson.items");
+  //   console.log(json?.items, "json.itemsjson.items");
   dispatch(setSearchVideos(json.items));
 };

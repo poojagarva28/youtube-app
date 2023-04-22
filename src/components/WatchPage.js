@@ -17,7 +17,7 @@ const WatchPage = () => {
   }, []);
 
   useEffect(() => {
-    console.log(searchParams, "pathname");
+    // console.log(searchParams, "pathname");
     window.scrollTo(0, 0);
   }, [searchParams]);
 

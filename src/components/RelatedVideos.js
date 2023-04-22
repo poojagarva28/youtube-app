@@ -6,7 +6,7 @@ const RelatedVideos = () => {
   const [videos, setVideos] = useState([]);
   const [searchParams] = useSearchParams();
 
-  console.log(searchParams.get("v"), "currentVideoId");
+  // console.log(searchParams.get("v"), "currentVideoId");
 
   useEffect(() => {
     getRelatedVideos();
@@ -20,7 +20,7 @@ const RelatedVideos = () => {
       GOOGLE_API_KEY;
     const data = await fetch(api);
     const json = await data.json();
-    console.log(json.items, "related videos");
+    // console.log(json.items, "related videos");
     setVideos(json.items);
   };
   return (

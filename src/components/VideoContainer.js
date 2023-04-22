@@ -22,9 +22,9 @@ const VideoContainer = () => {
         "&key=" +
         GOOGLE_API_KEY
     );
-    console.log(data, "data");
+    // console.log(data, "data");
     const json = await data.json();
-    console.log(json?.items, "json.itemsjson.items");
+    // console.log(json?.items, "json.itemsjson.items");
     dispatch(setSearchVideos(json.items));
   };
 
@@ -32,8 +32,8 @@ const VideoContainer = () => {
     <div className="flex flex-wrap gap-4 mt-2">
       {/* HIGHER ORDER COMPONENT FROM VIDEO CARD - AD COMPONENT */}
       {/* {videos[0] && <AdVideoCard videoInfo={videos[0]} />} */}
-      {appVideos.map((item) => (
-        <div className=" w-[19%]" key={item.id.videoId}>
+      {appVideos.map((item, i) => (
+        <div className=" w-[19%]" key={i}>
           <Link to={`/youtube-app/watch?v=${item.id.videoId}`}>
             <VideoCard videoInfo={item} />
           </Link>
